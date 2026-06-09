@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FreshPlate Support</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green: #3DB85C;
+      --dark-green: #1A3A1A;
+      --light-green: #F0F7EE;
+      --mid-green: #4A6B4A;
+      --border: #D4E8D0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+      background: var(--light-green);
+      color: var(--dark-green);
+      line-height: 1.6;
+    }
+
+    /* ── APP ICON ── */
+    .app-icon {
+      width: 38px;
+      height: 38px;
+      border-radius: 10px;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+
+    .app-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    /* ── HEADER ── */
+    header {
+      background: #fff;
+      border-bottom: 1px solid var(--border);
+      padding: 14px 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-text {
+      font-size: 20px;
+      font-weight: 800;
+      color: var(--dark-green);
+      letter-spacing: -0.5px;
+    }
+
+    .logo-text span { color: var(--green); }
+
+    nav {
+      margin-left: auto;
+    }
+
+    nav a {
+      color: var(--mid-green);
+      text-decoration: none;
+      font-size: 15px;
+      font-weight: 500;
+    }
+
+    /* ── HERO ── */
+    .hero {
+      text-align: center;
+      padding: 72px 24px 48px;
+    }
+
+    .hero-icon {
+      width: 80px;
+      height: 80px;
+      border-radius: 20px;
+      overflow: hidden;
+      margin: 0 auto 24px;
+      box-shadow: 0 8px 32px rgba(26,58,26,0.15);
+    }
+
+    .hero-icon img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .hero h1 {
+      font-size: clamp(30px, 5vw, 50px);
+      font-weight: 800;
+      color: var(--dark-green);
+      letter-spacing: -1px;
+      line-height: 1.1;
+    }
+
+    .hero p {
+      margin-top: 14px;
+      font-size: 17px;
+      color: var(--mid-green);
+      max-width: 440px;
+      margin-inline: auto;
+      margin-top: 14px;
+    }
+
+    .contact-btn {
+      display: inline-block;
+      margin-top: 28px;
+      background: var(--green);
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 13px 30px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .contact-btn:hover { background: #2ea04d; }
+
+    /* ── MAIN ── */
+    main {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 0 24px 80px;
+    }
+
+    .section-label {
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: var(--green);
+      margin-bottom: 20px;
+    }
+
+    /* ── FAQ ── */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-bottom: 56px;
+    }
+
+    details {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      overflow: hidden;
+    }
+
+    summary {
+      padding: 20px 24px;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--dark-green);
+      cursor: pointer;
+      list-style: none;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      user-select: none;
+    }
+
+    summary::-webkit-details-marker { display: none; }
+
+    summary::after {
+      content: '+';
+      font-size: 22px;
+      font-weight: 300;
+      color: var(--green);
+      transition: transform 0.2s;
+      flex-shrink: 0;
+      margin-left: 16px;
+    }
+
+    details[open] summary::after { transform: rotate(45deg); }
+
+    .faq-body {
+      padding: 0 24px 20px;
+      font-size: 15px;
+      color: var(--mid-green);
+      line-height: 1.7;
+      border-top: 1px solid var(--border);
+      padding-top: 16px;
+    }
+
+    .faq-body a { color: var(--green); text-decoration: none; }
+
+    /* ── CONTACT CARD ── */
+    .contact-card {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 36px 32px;
+      text-align: center;
+    }
+
+    .contact-card h2 {
+      font-size: 22px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .contact-card p {
+      color: var(--mid-green);
+      font-size: 15px;
+      margin-bottom: 24px;
+    }
+
+    .contact-card a {
+      display: inline-block;
+      background: var(--green);
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 12px 28px;
+      border-radius: 50px;
+      text-decoration: none;
+      transition: background 0.2s;
+    }
+
+    .contact-card a:hover { background: #2ea04d; }
+
+    /* ── FOOTER ── */
+    footer {
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 13px;
+      color: #8aaa8a;
+      border-top: 1px solid var(--border);
+    }
+
+    footer a { color: var(--green); text-decoration: none; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="app-icon">
+      <img src="logo.png" alt="FreshPlate logo" />
+    </div>
+    <span class="logo-text">Fresh<span>Plate</span></span>
+    <nav>
+      <a href="mailto:freshplateofficial@gmail.com">Contact</a>
+    </nav>
+  </header>
+
+  <div class="hero">
+    <div class="hero-icon">
+      <img src="logo.png" alt="FreshPlate" />
+    </div>
+    <h1>How can we help?</h1>
+    <p>Find answers to common questions about FreshPlate's pantry tracker, or reach out directly.</p>
+    <a class="contact-btn" href="mailto:freshplateofficial@gmail.com">Email Support</a>
+  </div>
+
+  <main>
+    <p class="section-label">Frequently Asked Questions</p>
+
+    <div class="faq-list">
+
+      <details>
+        <summary>What does FreshPlate do?</summary>
+        <p class="faq-body">FreshPlate is a pantry tracking app that helps you keep track of everything in your fridge, freezer, and cupboards. It shows you what you have, what's expiring soon, and suggests recipes you can make with what's already at home — so you waste less food and spend less at the grocery store.</p>
+      </details>
+
+      <details>
+        <summary>How do I add items to my pantry?</summary>
+        <p class="faq-body">You can add items by scanning a barcode with your camera or searching by name. FreshPlate pulls in the product name, category, and nutritional info automatically. You can also set a quantity and expiration date at the same time.</p>
+      </details>
+
+      <details>
+        <summary>How do expiry alerts work?</summary>
+        <p class="faq-body">When you add an item, you can set its expiration date. FreshPlate will send you a notification a few days before it expires so you have time to use it up. You can adjust how early you get notified in the app's settings.</p>
+      </details>
+
+      <details>
+        <summary>Can FreshPlate suggest recipes from my pantry?</summary>
+        <p class="faq-body">Yes — FreshPlate looks at what you currently have and suggests recipes that use those ingredients. You can filter by meal type, dietary preferences, and more. It's a great way to use up what you have before buying more.</p>
+      </details>
+
+      <details>
+        <summary>How does the grocery list work?</summary>
+        <p class="faq-body">FreshPlate generates a grocery list based on what you're running low on or missing for a recipe. It automatically skips items you already have in your pantry, so you never buy duplicates by accident.</p>
+      </details>
+
+      <details>
+        <summary>Can I share my pantry with family or roommates?</summary>
+        <p class="faq-body">Yes. You can share your pantry with other FreshPlate users so everyone in your household sees the same inventory in real time. Anyone can add, update, or remove items.</p>
+      </details>
+
+      <details>
+        <summary>How do I cancel my subscription?</summary>
+        <p class="faq-body">You can cancel anytime through your iPhone's Settings → Apple ID → Subscriptions → FreshPlate. Your access continues until the end of the current billing period with no charges after that.</p>
+      </details>
+
+      <details>
+        <summary>I found a bug or the app crashed. What should I do?</summary>
+        <p class="faq-body">Sorry about that! Email us at <a href="mailto:freshplateofficial@gmail.com">freshplateofficial@gmail.com</a> with a description of what happened, your device model, and your iOS version. A screenshot helps us a lot.</p>
+      </details>
+
+      <details>
+        <summary>How do I delete my account?</summary>
+        <p class="faq-body">Email <a href="mailto:freshplateofficial@gmail.com">freshplateofficial@gmail.com</a> with the subject "Delete My Account" and we'll take care of it within 48 hours. All your data will be permanently removed.</p>
+      </details>
+
+    </div>
+
+    <div class="contact-card">
+      <h2>Still need help?</h2>
+      <p>Our support team typically responds within 24 hours on business days.</p>
+      <a href="mailto:freshplateofficial@gmail.com">Email Us</a>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2026 FreshPlate &nbsp;·&nbsp;
+    <a href="mailto:freshplateofficial@gmail.com">freshplateofficial@gmail.com</a>
+  </footer>
+
+</body>
+</html>
